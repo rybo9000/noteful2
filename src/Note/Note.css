@@ -1,0 +1,9 @@
+.noteSummary {
+    width: 100%;
+    height: 150px;
+    background-color: blue;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}

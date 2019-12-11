@@ -1,7 +1,43 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    min-width: 90%;
     background-color: grey;
     margin: auto;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    color: white;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+main {
+    display: flex;
+    background-color: yellow;
+}
+
+.right {
+    display: flex;
+    flex: 3;
+}
+
+.left {
+    display: flex;
+    flex: 1;
+    background-color: white;
+    padding: 10px;
+}
+
+footer {
+    margin-top: auto;
 }
