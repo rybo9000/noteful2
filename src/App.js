@@ -3,7 +3,7 @@ import HeaderTop from './HeaderTop/HeaderTop';
 import Sidebar from './Sidebar/Sidebar';
 import AllNotes from './AllNotes/AllNotes';
 import FolderNotes from './FolderNotes/FolderNotes';
-import Note from './Note/Note';
+import NoteDetail from './NoteDetail/NoteDetail';
 import { Route } from 'react-router-dom';
 import './App.css';
 import state from './State.js';
@@ -28,8 +28,8 @@ class App extends React.Component {
             </div>
             <div className="right">
               <Route exact path='/' render={() => <AllNotes notes={this.state.state.notes} />} />
-              <Route path='/folder/:folderId' component={FolderNotes} notes={this.state.state.notes}/>
-              <Route path='/note/:noteId' component={Note} />
+              <Route path='/folder/:folderId' render={(props) => <FolderNotes notes={this.state.state.notes} {...props}/>} />
+              <Route path='/note/:noteId' render={(props) => <NoteDetail notes={this.state.state.notes} {...props}/>} />
             </div>
           </main>
           <footer>
