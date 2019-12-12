@@ -4,7 +4,7 @@ import './Folder.css';
 class Folder extends React.Component {
     render() {
         return (
-        <div key={this.props.key} className="folderDiv">{this.props.name}</div>
+        <li key={this.props.key} className={this.props.folderClass}>{this.props.name}</li>
         )
     }
 }

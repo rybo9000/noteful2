@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Note.css';
 
 class Note extends React.Component {
@@ -6,7 +7,7 @@ class Note extends React.Component {
         return (
             <div className="noteSummary">
                 <div>
-                    <h3 key={this.props.id}>{this.props.name}</h3>
+                    <Link to={`/note/${this.props.id}`}><h3 key={this.props.id}>{this.props.name}</h3></Link>
                 </div>
                 <div>
                     Date modified on {this.props.modified} <button>Delete Note</button>

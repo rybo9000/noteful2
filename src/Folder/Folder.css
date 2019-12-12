@@ -5,14 +5,27 @@
     margin: 5px;
     padding: 5px;
     font-size: 1.5rem;
+    display: block;
+    width: 80%;
+    border: none;
 }
 
-.folderDiv a:link {
+.folderSelected {
+    background-color: red;
     color: white;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.5rem;
+    display: block;
+    width: 80%;
+    border: none;
+}
+
+a:visited {
     text-decoration: none;
 }
 
-.folderDiv a:visited {
-    color: white;
-    text-decoration: none;
+li {
+    list-style-type: none;
 }

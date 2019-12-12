@@ -1,8 +1,6 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-width: 90%;
-    background-color: grey;
     margin: auto;
     height: 100%;
 }
@@ -10,32 +8,37 @@
 header {
     display: flex;
     justify-content: center;
-    background-color: gray;
+    background-color: black;
     color: white;
 
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
+header a:link {
+    color: white;
+    text-decoration: none;
+}
+
+header a:visited {
+    color: white;
+    text-decoration: none;
 }
 
 main {
     display: flex;
-    background-color: yellow;
 }
 
 .right {
     display: flex;
     flex: 3;
+    padding: 20px;
 }
 
 .left {
     display: flex;
     flex: 1;
-    background-color: white;
     padding: 10px;
+    min-width: 250px;
+    flex-direction: column;
 }
 
 footer {
