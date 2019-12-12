@@ -3,6 +3,8 @@
     flex-direction: column;
     margin: auto;
     height: 100%;
+    align-items: stretch;
+    min-height: 100vh;
 }
 
 header {
@@ -25,6 +27,7 @@ header a:visited {
 
 main {
     display: flex;
+    flex-grow: 1;
 }
 
 .right {
@@ -39,8 +42,12 @@ main {
     padding: 10px;
     min-width: 250px;
     flex-direction: column;
+    padding-top: 5%;
 }
 
 footer {
     margin-top: auto;
+    background-color: black;
+    color: white;
+    min-height: 200px;
 }

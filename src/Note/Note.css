@@ -1,11 +1,48 @@
 .noteSummary {
-    width: 100%;
+    min-width: 500px;
     height: 150px;
     padding: 5px;
     margin: 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border: 4px solid black;
-    background-color: lavenderblush;
+    background-color: moccasin;
     border-radius: 4px;
+    justify-content: space-between;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.noteLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.noteRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.noteRight button {
+    border: none;
+    font-size: 1.5rem;
+    margin: 3px; 
+    padding: 8px;
+    border-radius: 3px;
+    background-color: red;
+    color: white;
 }

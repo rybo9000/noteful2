@@ -6,11 +6,12 @@ class Note extends React.Component {
     render() {
         return (
             <div className="noteSummary">
-                <div>
-                    <Link to={`/note/${this.props.id}`}><h3 key={this.props.id}>{this.props.name}</h3></Link>
+                <div className="noteLeft">
+                    <Link to={`/note/${this.props.id}`}><h2 key={this.props.id}>{this.props.name}</h2></Link>
+                    <p>Date modified on {this.props.modified} </p>
                 </div>
-                <div>
-                    Date modified on {this.props.modified} <button>Delete Note</button>
+                <div className="noteRight">
+                    <button>Delete Note</button>
                 </div>
                 
             </div>

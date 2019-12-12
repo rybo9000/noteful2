@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Folder from '../Folder/Folder';
+import './SideBarNote.css';
 
 class SideBarNote extends React.Component {
     render() {
@@ -14,7 +15,7 @@ class SideBarNote extends React.Component {
             <div class="sideBar">
                 <li>
                     <Link to={`/folder/${folderObject[0].id}`}><Folder name={folderObject[0].name} key={folderObject[0].id} folderClass="folderDiv"/></Link>
-                    <button onClick={() => this.props.history.goBack()}>Back</button>
+                    <button onClick={() => this.props.history.goBack()} className="backButton">Back</button>
                 </li>
             </div>
         )
