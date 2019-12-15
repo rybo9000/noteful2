@@ -1,20 +1,32 @@
 import React from 'react';
 import Note from '../Note/Note';
+import NoteContext from '../NoteContext';
 
 class FolderNotes extends React.Component {
     render() {
     
         
-        const notesArray = (this.props.notes.filter(note => note.folderId === this.props.match.params.folderId)).map((note) => {
-            return <Note id={note.id} name={note.name} modified={note.modified} key={note.id}/>
-        });
+
 
         
         
         return (
-            <div>
-                {notesArray}
-            </div>
+            
+            <NoteContext.Consumer>
+                {(value) => {
+                            
+                    const notesArray = (value.state.state.notes.filter(note => note.folderId === this.props.match.params.folderId)).map((note) => {
+                        return <Note id={note.id} name={note.name} modified={note.modified} key={note.id}/>
+                    });
+                    
+                    return (
+                        <div>
+                            {notesArray}
+                        </div>
+                    )
+                }}
+            </NoteContext.Consumer>
+
         )
     }
 }

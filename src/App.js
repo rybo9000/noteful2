@@ -10,14 +10,18 @@ import NoteContext from './NoteContext';
 
 class App extends React.Component {
   
+
+  
   state = {
     state: state
   }
+
+
   
   render() {
 
     const contextValue = {
-      state: state
+      state: this.state
     }
     
     return (
@@ -28,9 +32,9 @@ class App extends React.Component {
             </header>
             <main>
               <Switch>
-                <Route exact path='/' render={() => <MainRoute folders={this.state.state.folders} notes={this.state.state.notes} /> } />
-                <Route path='/folder/:folderId' render={(props) => <DynamicFolderRoute folders={this.state.state.folders} notes={this.state.state.notes}   {...props}/>  } />
-                <Route path='/note/:noteId' render={(props) => <DynamicNoteRoute folders={this.state.state.folders} notes={this.state.state.notes}   {...props} /> } />
+                <Route exact path='/' component={MainRoute}/>
+                <Route path='/folder/:folderId' component={DynamicFolderRoute} />
+                <Route path='/note/:noteId' component={DynamicNoteRoute} />
               </Switch>
             </main>
             <footer>

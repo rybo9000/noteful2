@@ -11,10 +11,10 @@ class DynamicFolderRoute extends React.Component {
             
             <>
                 <div className="left">
-                <SidebarNote folders={this.props.folders}   {...this.props}/>
+                <SidebarNote {...this.props}/>
                 </div>
                 <div className="right">
-                <NoteDetail notes={this.props.notes}  {...this.props}/>
+                <NoteDetail {...this.props}/>
                 </div>
             </>
         )

@@ -8,10 +8,10 @@ class MainRoute extends React.Component {
         return (
             <>
                 <div className="left">
-                    <Sidebar folders={this.props.folders} />
+                    <Sidebar />
                 </div>
                 <div className="right">
-                    <AllNotes notes={this.props.notes} /> 
+                    <AllNotes /> 
                 </div>
             </>
         )
