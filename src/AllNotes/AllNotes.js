@@ -1,5 +1,6 @@
 import React from 'react';
 import Note from '../Note/Note';
+import NoteContext from '../NoteContext';
 
 class NoteList extends React.Component {
     render() {
@@ -9,11 +10,17 @@ class NoteList extends React.Component {
         });
         
         return (
+            <NoteContext.Consumer>
+                {function renderPropr() {
+                
+            return (
             <div>
                 {allNotes}
             </div>
+            )
+            }}
+            </NoteContext.Consumer>
         )
-    }
-}
+    }}
 
 export default NoteList;
