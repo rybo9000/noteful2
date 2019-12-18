@@ -11,14 +11,35 @@ import { withRouter } from 'react-router-dom';
 
 class App extends React.Component {
   
-
+state = {
+  notes: state.notes,
+  folders: state.folders
+}
   
-  state = {
-    notes: state.notes,
-    folders: state.folders
+
+
+  componentDidMount() {
+    
+    const urls = [
+      'http://localhost:9090/notes',
+      'http://localhost:9090/folders'
+
+    ]
+
+    Promise.all(urls.map((url) => {
+      fetch(url)
+      .then(response => response.json())
+    }))
+    .then(response => {
+      console.log(response);)
+    }    
+  
   }
+  
 
   
+
+
   
   submitDelete = (id, path) => {
     
