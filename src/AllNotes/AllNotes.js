@@ -8,8 +8,9 @@ class NoteList extends React.Component {
         return (
             <NoteContext.Consumer>
                 {(value) => {
-                        const allNotes = value.state.state.notes.map((note) => {
-                            return <Note id={note.id} name={note.name} modified={note.modified} folderId={note.folderId}/>
+                        
+                        const allNotes = value.notes.map((note) => {
+                            return <Note id={note.id} name={note.name} modified={note.modified} folderId={note.folderId} />
                         });
                 return (
                 <div>

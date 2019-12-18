@@ -12,7 +12,7 @@ class SideBarFolder extends React.Component {
             <NoteContext.Consumer>
                 {(value) => {
                             
-                    const folderArray = value.state.state.folders.map((folder) => {
+                    const folderArray = value.folders.map((folder) => {
     
                         const folderClass = folder.id === this.props.match.params.folderId ? "folderSelected" : "folderDiv";
                         
@@ -21,9 +21,9 @@ class SideBarFolder extends React.Component {
                     
                     return (
                         <div className="sideBar">
-                            <li>
+                            <ul>
                                 {folderArray}
-                            </li>
+                            </ul>
                         </div>
                     )
                 }}

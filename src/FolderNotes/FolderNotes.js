@@ -15,8 +15,8 @@ class FolderNotes extends React.Component {
             <NoteContext.Consumer>
                 {(value) => {
                             
-                    const notesArray = (value.state.state.notes.filter(note => note.folderId === this.props.match.params.folderId)).map((note) => {
-                        return <Note id={note.id} name={note.name} modified={note.modified} key={note.id}/>
+                    const notesArray = (value.notes.filter(note => note.folderId === this.props.match.params.folderId)).map((note) => {
+                        return <Note id={note.id} name={note.name} modified={note.modified} key={note.id} submitDelete={value.submitDelete}/>
                     });
                     
                     return (

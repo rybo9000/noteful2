@@ -1,5 +1,6 @@
 import React from 'react';
 import NoteContext from '../NoteContext';
+import Note from '../Note/Note';
 
 class NoteDetail extends React.Component {
     render() {
@@ -10,12 +11,11 @@ class NoteDetail extends React.Component {
             <NoteContext.Consumer>
                 {(value) => {
                     
-                    const noteObject = (value.state.state.notes.filter(note => note.id === this.props.match.params.noteId))
-                    console.log(noteObject);
+                    const noteObject = (value.notes.filter(note => note.id === this.props.match.params.noteId))
                     
                     return (
                         <div>
-                            <h1>{noteObject[0].name}</h1>
+                            <Note id={noteObject[0].id} name={noteObject[0].name} modified={noteObject[0].modified} key={noteObject.id} {...this.props}/>
                             <p>{noteObject[0].content}</p>
                         </div>
                     )

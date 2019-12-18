@@ -10,15 +10,15 @@ class Sidebar extends React.Component {
             <NoteContext.Consumer>
                 {(value) => {
                     
-                    const folderArray = value.state.state.folders.map((folder) => {
+                    const folderArray = value.folders.map((folder) => {
                         return <Link to={`/folder/${folder.id}`}><Folder name={folder.name} key={folder.id} folderClass="folderDiv" /></Link>
                     })
                     
                     return (
-                        <div class="sideBar">
-                        <li>
-                        {folderArray}
-                        </li>
+                        <div className="sideBar">
+                            <ul>
+                                {folderArray}
+                            </ul>
                         </div>
                     )
                 }}

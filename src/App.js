@@ -7,21 +7,42 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import state from './State.js';
 import NoteContext from './NoteContext';
+import { withRouter } from 'react-router-dom';
 
 class App extends React.Component {
   
 
   
   state = {
-    state: state
+    notes: state.notes,
+    folders: state.folders
   }
 
+  
+  
+  submitDelete = (id, path) => {
+    
+    const updatedNotes = this.state.notes.filter(note => note.id !== id);
 
+    this.setState({
+      notes: updatedNotes
+    })
+
+    if (path === '/note/:noteId') {
+      this.props.history.push('/');
+    }
+    
+   
+    
+  }
   
   render() {
 
     const contextValue = {
-      state: this.state
+      notes: this.state.notes,
+      folders: this.state.folders,
+      submitDelete: this.submitDelete,
+      submitDeleteDetail: this.submitDeleteDetail
     }
     
     return (
@@ -46,4 +67,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
