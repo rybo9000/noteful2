@@ -1,6 +1,6 @@
 import React from 'react';
 import Folder from '../Folder/Folder';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import NoteContext from '../NoteContext';
 
 class Sidebar extends React.Component {
@@ -18,6 +18,9 @@ class Sidebar extends React.Component {
                         <div className="sideBar">
                             <ul>
                                 {folderArray}
+                                <li><button onClick={() => this.props.history.push('/addFolder/')} className="addFolderButton">Add Folder</button></li>
+
+                                
                             </ul>
                         </div>
                     )
@@ -27,4 +30,4 @@ class Sidebar extends React.Component {
     }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);

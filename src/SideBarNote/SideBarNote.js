@@ -13,11 +13,11 @@ class SideBarNote extends React.Component {
         return (
             
             <NoteContext.Consumer>
-                {(value) => {
+                {({notes, folders}) => {
                     
-                    const folderId = (value.notes.filter(note => note.id === this.props.match.params.noteId))[0].folderId;
+                    const folderId = (notes.filter(note => note.id === this.props.match.params.noteId))[0].folderId;
 
-                    const folderObject = value.folders.filter(folder => folderId === folder.id);
+                    const folderObject = folders.filter(folder => folderId === folder.id);
                     
                     return (
                         <div className="sideBar">

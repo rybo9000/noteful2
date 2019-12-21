@@ -3,6 +3,7 @@ import HeaderTop from './HeaderTop/HeaderTop';
 import MainRoute from './MainRoute/MainRoute';
 import DynamicFolderRoute from './DynamicFolderRoute/DynamicFolderRoute';
 import DynamicNoteRoute from './DynamicNoteRoute/DynamicNoteRoute';
+import AddFolder from './AddFolder/AddFolder';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import state from './State.js';
@@ -18,23 +19,26 @@ state = {
   
 
 
-  componentDidMount() {
-    
-    const urls = [
-      'http://localhost:9090/notes',
-      'http://localhost:9090/folders'
+componentDidMount() {
+  Promise.all([
+      fetch(`http://localhost:9090/notes`),
+      fetch(`http://localhost:9090/folders`)
+  ])
+      .then(([notesRes, foldersRes]) => {
+          if (!notesRes.ok)
+              return notesRes.json().then(e => Promise.reject(e));
+          if (!foldersRes.ok)
+              return foldersRes.json().then(e => Promise.reject(e));
 
-    ]
-
-    Promise.all(urls.map((url) => {
-      fetch(url)
-      .then(response => response.json())
-    }))
-    .then(response => {
-      console.log(response);)
-    }    
-  
-  }
+          return Promise.all([notesRes.json(), foldersRes.json()]);
+      })
+      .then(([notes, folders]) => {
+          this.setState({notes, folders});
+      })
+      .catch(error => {
+          console.error({error});
+      });
+}
   
 
   
@@ -77,6 +81,7 @@ state = {
                 <Route exact path='/' component={MainRoute}/>
                 <Route path='/folder/:folderId' component={DynamicFolderRoute} />
                 <Route path='/note/:noteId' component={DynamicNoteRoute} />
+                <Route path='/addFolder/' component={AddFolder} />
               </Switch>
             </main>
             <footer>

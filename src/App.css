@@ -51,3 +51,15 @@ footer {
     color: white;
     min-height: 200px;
 }
+
+.addFolderButton {
+    background-color:lightgreen;
+    color: white;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.5rem;
+    display: block;
+    width: 80%;
+    border: none;
+}
