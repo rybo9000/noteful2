@@ -14,7 +14,8 @@ class App extends React.Component {
   
 state = {
   notes: state.notes,
-  folders: state.folders
+  folders: state.folders,
+  addFolderInput: ""
 }
   
 
@@ -60,6 +61,17 @@ componentDidMount() {
    
     
   }
+
+  addFolderOnInput = (e) => {
+    this.setState({
+      addFolderInput: e.target.value
+    })
+  }
+  
+  submitAddFolder = (e) => {
+    e.preventDefault();
+    console.log("we did it reddit!");
+  }
   
   render() {
 
@@ -67,7 +79,10 @@ componentDidMount() {
       notes: this.state.notes,
       folders: this.state.folders,
       submitDelete: this.submitDelete,
-      submitDeleteDetail: this.submitDeleteDetail
+      submitDeleteDetail: this.submitDeleteDetail,
+      submitAddFolder: this.submitAddFolder,
+      addFolderOnInput: this.addFolderOnInput,
+      addFolderInput: this.state.addFolderInput
     }
     
     return (
