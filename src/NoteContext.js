@@ -5,12 +5,14 @@ const NoteContext = React.createContext({
     submitDelete: () => {},
     submitDeleteDetail: () => {},
     submitAddFolder: () => {},
+    submitAddNote: () => {},
     addFolderOnInput: () => {},
     validateAddFolder: () => {},
     validateAddNote: () => {},
     validateNoteDropDown: () => {},
     addNoteOnInput: () => {},
-    addDropDown: () => {}
+    addDropDown: () => {},
+    addNoteTextOnInput: () => {}
 })
 
 export default NoteContext;

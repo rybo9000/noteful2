@@ -28,6 +28,10 @@ state = {
     noteValue: null,
     touched: false,
   },
+  addNoteTextInput: {
+    fieldValue: "",
+    touched: false,
+  },
   
 }
   
@@ -89,17 +93,33 @@ componentDidMount() {
     }
   }
 
+  validateAddNoteText = (fieldValue) => {
+    const name = this.state.addNoteTextInput.fieldValue.trim();
+    if (name.length === 0) {
+      return 'Please enter a value'
+    }
+  }
+
   validateNoteDropDown = (noteValue) => {
-    const theValue = this.state.addNoteInput.noteValue;
-    // if (theValue === null) {
-    //   return 'Please enter a value'
-    // }
+    const theValue = this.state.addDropDown.noteValue;
+    console.log(theValue);
+    if (theValue === null) {
+      return 'Please enter a value'
+    }
     
   }
 
   addNoteOnInput = (e) => {
     this.setState({
       addNoteInput: {
+        fieldValue: e.target.value
+      }
+    })
+  }
+
+  addNoteTextOnInput = (e) => {
+    this.setState({
+      addNoteTextInput: {
         fieldValue: e.target.value
       }
     })
@@ -142,6 +162,28 @@ componentDidMount() {
     
     this.props.history.push('/');
   }
+
+  submitAddNote = (e) => {
+    e.preventDefault();
+    const values = {id:"", name: this.state.addNoteInput.fieldValue, modified: "", folderId: this.state.addDropDown.noteValue, content: this.state.addNoteTextInput.fieldValue};
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    fetch(`http://localhost:9090/notes`, options)
+    .then (response => response.json())
+    .then (response => {
+      this.setState({
+        notes: [...this.state.notes, response]
+      })
+    })
+
+    
+    this.props.history.push('/');
+  }
   
   render() {
 
@@ -151,14 +193,18 @@ componentDidMount() {
       submitDelete: this.submitDelete,
       submitDeleteDetail: this.submitDeleteDetail,
       submitAddFolder: this.submitAddFolder,
+      submitAddNote: this.submitAddNote,
       addFolderOnInput: this.addFolderOnInput,
       addFolderInput: this.state.addFolderInput,
       validateAddFolder: this.validateAddFolder,
       validateAddNote: this.validateAddNote,
       addNoteInput: this.state.addNoteInput,
-      addNoteOnInput: this.addNoteOnInput,
+      addNoteTextInput: this.state.addNoteTextInput,
       validateNoteDropDown: this.validateNoteDropDown,
-      addDropDown: this.addDropDown
+      addDropDown: this.addDropDown,
+      addNoteTextOnInput: this.addNoteTextOnInput,
+      addNoteOnInput: this.addNoteOnInput,
+      validateAddNoteText: this.validateAddNoteText,
     }
     
     return (

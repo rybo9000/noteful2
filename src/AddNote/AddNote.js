@@ -22,17 +22,20 @@ class AddNote extends React.Component {
                         <div className="addNoteDiv">
                             <form id="addNote" onSubmit={(e) => value.submitAddNote(e)}>
                                 <p><label htmlFor="noteName">Type The Note Name Below</label></p>
-                                <p><input type="text" id="noteName"  className="addnoteFormItem" value={value.addNoteInput.fieldValue} onInput={(e) => value.addNoteOnInput(e)}/></p>
+                                <p><input type="text" id="noteName"  className="addNoteFormItem" value={value.addNoteInput.fieldValue} onInput={(e) => value.addNoteOnInput(e)}/></p>
                                 <p><ValidationError message={value.validateAddNote()}/></p>
+                                <p><label htmlFor="noteText">Type The Note Text</label></p>
+                                <p><textarea id="noteText"  className="addNoteFormItem" value={value.addNoteTextInput.fieldValue} onInput={(e) => value.addNoteTextOnInput(e)}/></p>
+                                <p><ValidationError message={value.validateAddNoteText()}/></p>
                                 <p><label htmlFor="folderId">Select The Folder Below</label></p>
                                 <p>
-                                    <select id="folderId"  className="addnoteFormItem" onChange={(e) => {value.addDropDown(e)}}>
+                                    <select id="folderId"  className="addNoteFormItem" onChange={(e) => {value.addDropDown(e)}}>
                                     <option value={null}>Select A Folder</option>
                                     {folderArray}
                                     </select>
                                 </p>
                                 <p><ValidationError message={value.validateNoteDropDown()}/></p>
-                                <p><button type="submit" id="addNoteSubmit" className="addNoteFormItem" disabled={value.validateAddNote() || value.validateNoteDropDown()}>Add Note</button><button type="submit" id="addNoteGoBack" onClick={() => this.props.history.push('/')} className="addNoteFormItem">Go Back</button></p>
+                                <p><button type="submit" id="addNoteSubmit" className="addNoteFormItem" disabled={value.validateAddNoteText() || value.validateAddNote() || value.validateNoteDropDown()}>Add Note</button><button type="submit" id="addNoteGoBack" onClick={() => this.props.history.push('/')} className="addNoteFormItem">Go Back</button></p>
                             </form>
                         </div>
                     )

@@ -24,6 +24,7 @@ class SideBarFolder extends React.Component {
                             <ul>
                                 {folderArray}
                                 <li><button onClick={() => this.props.history.push('/addFolder/')} className="addFolderButton">Add Folder</button></li>
+                                <li><button onClick={() => this.props.history.push('/addNote/')} className="addFolderButton">Add Note</button></li>
                             </ul>
                         </div>
                     )
