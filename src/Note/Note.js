@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './Note.css';
 import NoteContext from '../NoteContext'
+import PropTypes from 'prop-types';
 
 class Note extends React.Component {
     render() {
@@ -27,6 +28,12 @@ class Note extends React.Component {
 
         )
     }
+}
+
+Note.propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    modified: PropTypes.string,
 }
 
 export default withRouter(Note);

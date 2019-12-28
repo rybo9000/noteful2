@@ -10,6 +10,7 @@ import './App.css';
 import state from './State.js';
 import NoteContext from './NoteContext';
 import { withRouter } from 'react-router-dom';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends React.Component {
   
@@ -165,7 +166,8 @@ componentDidMount() {
 
   submitAddNote = (e) => {
     e.preventDefault();
-    const values = {id:"", name: this.state.addNoteInput.fieldValue, modified: "", folderId: this.state.addDropDown.noteValue, content: this.state.addNoteTextInput.fieldValue};
+    const now = new Date();
+    const values = {id:"", name: this.state.addNoteInput.fieldValue, modified: now, folderId: this.state.addDropDown.noteValue, content: this.state.addNoteTextInput.fieldValue};
     const options = {
       method: 'POST',
       body: JSON.stringify(values),
@@ -214,13 +216,15 @@ componentDidMount() {
               <HeaderTop />
             </header>
             <main>
-              <Switch>
-                <Route exact path='/' component={MainRoute}/>
-                <Route path='/folder/:folderId' component={DynamicFolderRoute} />
-                <Route path='/note/:noteId' component={DynamicNoteRoute} />
-                <Route path='/addFolder/' component={AddFolder} />
-                <Route path='/addNote/' component={AddNote} />
-              </Switch>
+              <ErrorBoundary>
+                <Switch>
+                  <Route exact path='/' component={MainRoute}/>
+                  <Route path='/folder/:folderId' component={DynamicFolderRoute} />
+                  <Route path='/note/:noteId' component={DynamicNoteRoute} />
+                  <Route path='/addFolder/' component={AddFolder} />
+                  <Route path='/addNote/' component={AddNote} />
+                </Switch>
+              </ErrorBoundary>
             </main>
             <footer>
               Footer
