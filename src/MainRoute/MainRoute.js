@@ -1,19 +1,22 @@
 import React from 'react';
-import Sidebar from '../Sidebar/Sidebar';
-import AllNotes from '../AllNotes/AllNotes';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Primary from '../Primary/Primary';
+import MainSide from '../MainSide/MainSide';
+import MainContent from '../MainContent/MainContent';
 
 class MainRoute extends React.Component {
     render() {
-
         return (
             <>
-                <div className="left">
-                    <Sidebar />
-                </div>
-                <div className="right">
-                    <AllNotes /> 
-                </div>
+            <Header />
+            <Primary>
+                <MainSide folders={this.props.folders}/>
+                <MainContent notes={this.props.notes}/>
+            </Primary>
+            <Footer />
             </>
+
         )
     }
 }

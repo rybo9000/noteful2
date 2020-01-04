@@ -1,24 +1,24 @@
 import React from 'react';
-import SidebarNote from '../SideBarNote/SideBarNote';
-import NoteDetail from '../NoteDetail/NoteDetail';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Primary from '../Primary/Primary';
+import DynamicNoteSide from '../DynamicNoteSide/DynamicNoteSide';
+import DynamicNoteContent from '../DynamicNoteContent/DynamicNoteContent';
 
-class DynamicFolderRoute extends React.Component {
+class DynamicNoteRoute extends React.Component {
     render() {
-        
-        console.log(this.props);
-        
         return (
-            
             <>
-                <div className="left">
-                <SidebarNote {...this.props}/>
-                </div>
-                <div className="right">
-                <NoteDetail {...this.props}/>
-                </div>
+            <Header />
+            <Primary>
+                <DynamicNoteSide />
+                <DynamicNoteContent />
+            </Primary>
+            <Footer />
             </>
+
         )
     }
 }
 
-export default DynamicFolderRoute;
+export default DynamicNoteRoute;

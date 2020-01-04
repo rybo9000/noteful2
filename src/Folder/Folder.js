@@ -1,19 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Folder.css';
-import PropTypes from 'prop-types';
 
 class Folder extends React.Component {
+    
+    
+    
     render() {
+
+        const linkPath = `folder/${this.props.id}`;
+
         return (
-        <li key={this.props.key} className={this.props.folderClass}>{this.props.name}</li>
+        <li><Link to={linkPath}>{this.props.name}</Link></li>
         )
     }
-}
-
-Folder.propTypes = {
-    key: PropTypes.number,
-    className: PropTypes.string,
-    name: PropTypes.string
 }
 
 export default Folder;
